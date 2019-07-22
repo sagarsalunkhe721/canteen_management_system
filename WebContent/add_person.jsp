@@ -12,7 +12,7 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/style.css">
 <meta charset="ISO-8859-1">
-<title>Add Guests</title>
+<title>Add Persons</title>
 </head>
 <body>
 	<div class="container-fluid">
@@ -37,38 +37,49 @@
 			<div class="col-md-6 make-center">
 				<div class="bg-info w-50 mt-5 rounded">
 
-					<div class="make-center mt-2 badge">Enter Guest Info</div>
-					<spr:form action="add_guest.htm" commandName="guest">
+					<div class="make-center mt-2 badge">Enter Person Info</div>
+					<spr:form action="add_person.htm" commandName="person">
 						<div class="make-center mt-2">
 							<div>
-								<spr:input path="guestName" class="form-control rounded"
-									placeholder="Enter guest Name" />
+								<spr:input path="personName" class="form-control rounded"
+									placeholder="Enter Person Name" />
 							</div>
 						</div>
 
 						<div class="make-center mt-2">
 							<div>
-								<spr:input path="guestId" class="form-control rounded"
-									placeholder="Enter guest Id" />
+								<spr:input path="personId" class="form-control rounded"
+									placeholder="Enter Person Id" />
 							</div>
 						</div>
-							
-					
 						<div class="make-center mt-2">
 							<div>
 								<spr:input path="departmentId" class="form-control rounded"
-									placeholder="Enter Department Id"  />
+									placeholder="Enter Department Id" />
+							</div>
+						</div>
+						<div class="make-center mt-2">
+							<div>
+								<spr:input path="date" class="form-control rounded"
+									placeholder="Enter start Date" />
+							</div>
+						</div>
+
+						<div class="make-center mt-2">
+							<div>
+								<spr:input path="remark" class="form-control rounded"
+									placeholder="Enter Remark"  />
 							</div>
 						</div>
 
 						<div class="make-center mt-2">
 							<input class="btn btn-success rounded" type="submit"
-								value="Add Guest" style="width:200px"/>
+								value="Add Person" style="width:200px"/>
 						</div>
 					</spr:form>
 
 					<div class="make-center mt-2 mb-2">
-						<a class=" btn btn-primary rounded text-light" style="width:200px" href="guest_list.htm" >Back</a>
+						<a class=" btn btn-primary rounded text-light" style="width:200px" href="person_list.htm" >Back</a>
 					</div>
 				</div>
 			</div>

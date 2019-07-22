@@ -37,6 +37,10 @@
 		<list>
 			<value>com.canteenDB.cms.dto.User</value>
 			<value>com.canteenDB.cms.dto.Item</value>
+			<value>com.canteenDB.cms.dto.Department</value>
+			<value>com.canteenDB.cms.dto.Course</value>
+			<value>com.canteenDB.cms.dto.Guest</value>
+			<value>com.canteenDB.cms.dto.Person</value>
 		</list>
 	</property>
 	</bean>

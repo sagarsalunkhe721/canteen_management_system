@@ -18,15 +18,16 @@
 	<div class="container-fluid">
 		<div class="row bg-dark">
 			<nav class="navbar navbar-expand-lg bg-dark">
-				<a class="navbar-brand" href="#">CDAC CANTEEN</a>
+				<a class="navbar-brand" href="home.jsp">CDAC CANTEEN</a>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
-						<a class="nav-item nav-link active" href="add_item.jsp">Items
-							<span class="sr-only">(current)</span>
-						</a> <a class="nav-item nav-link" href="#">Course</a> <a
-							class="nav-item nav-link" href="#">Departments</a> <a
-							class="nav-item nav-link" href="#">Person</a> <a
-							class="nav-item nav-link" href="#">Guest</a>
+						<a class="nav-item nav-link active" href="item_list.htm">Items</a> 
+						<a class="nav-item nav-link"
+							href="course_list.htm">Course</a> 
+						<a class="nav-item nav-link" href="department_list.htm">Departments</a>
+						<a class="nav-item nav-link" href="person_list.htm">Person</a>
+						<a class="nav-item nav-link" href="guest_list.htm">Guest</a>
+						<a class="nav-item nav-link" href="supervisor/supervisor.jsp">Supervisor</a>
 					</div>
 				</div>
 			</nav>

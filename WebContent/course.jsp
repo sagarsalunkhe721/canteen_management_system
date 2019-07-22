@@ -1,11 +1,11 @@
-<%@page import="com.canteenDB.cms.dto.Item"%>
+<%@page import="com.canteenDB.cms.dto.Course"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <%-- <%@ taglib uri="http://www.springframework.org/tags/form" prefix="spr"%> --%>
 <%
-	List<Item> itemList = (List<Item>) request.getAttribute("ul");
+	List<Course> courseList = (List<Course>) request.getAttribute("ul");
 %>
 <!DOCTYPE html>
 <html>
@@ -50,11 +50,11 @@ $(document).ready(function(){
 		<div class="row d-flex make-center bg-secondary "
 			style="height: 55px;">
 			<div class="ml-3">
-				<a class="btn btn-primary" href="prep_item_form.htm">Add Item</a>
+				<a class="btn btn-primary" href="prep_course_form.htm">Add Course</a>
 			</div>
 			<div class="ml-3">
 				<input type="text" class="form-control rounded"
-					placeholder="Search Item" />
+					placeholder="Search Course" />
 			</div>
 			<div class="ml-3">
 				<input class="btn btn-success form-control rounded" type="submit"
@@ -64,11 +64,8 @@ $(document).ready(function(){
 		<table class="table table-striped table-bordered">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">Item Id</th>
-					<th scope="col">Name</th>
 					<th scope="col">Course Id</th>
-					<th scope="col">Item Type</th>
-					<th scope="col">Item Price</th>
+					<th scope="col">Course Name</th>
 					<th scope="col">Delete</th>
 					<th scope="col">Edit</th>
 				</tr>
@@ -76,16 +73,13 @@ $(document).ready(function(){
 			<tbody>
 
 				<%
-					for (Item item : itemList) {
+					for (Course course : courseList) {
 				%>
 				<tr class="text-light bg-info">
-					<td><%=item.getItemId()%></td>
-					<td><%=item.getItemName()%></td>
-					<td><%=item.getCourseId()%></td>
-					<td><%=item.getItemType()%></td>
-					<td><%=item.getItemPrice()%></td>
-					<td><a href="delete_item.htm?itemId=<%=item.getItemId()%>">Delete</a></td>
-					<td><a href="select_item.htm?itemId=<%=item.getItemId()%>">Select</a></td>
+					<td><%=course.getCourseId()%></td>
+					<td><%=course.getCourseName()%></td>
+					<td><a href="delete_course.htm?courseId=<%=course.getCourseId()%>">Delete</a></td>
+					<td><a href="select_course.htm?courseId=<%=course.getCourseId()%>">Select</a></td>
 				</tr>
 				<%
 					}

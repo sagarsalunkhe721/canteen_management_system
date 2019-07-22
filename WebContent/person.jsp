@@ -1,11 +1,11 @@
-<%@page import="com.canteenDB.cms.dto.Item"%>
+<%@page import="com.canteenDB.cms.dto.Person"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <%-- <%@ taglib uri="http://www.springframework.org/tags/form" prefix="spr"%> --%>
 <%
-	List<Item> itemList = (List<Item>) request.getAttribute("ul");
+	List<Person> personList = (List<Person>) request.getAttribute("ul");
 %>
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,7 @@ $(document).ready(function(){
 });
 </script>
 <meta charset="ISO-8859-1">
-<title>Items</title>
+<title>Persons</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script
@@ -50,11 +50,11 @@ $(document).ready(function(){
 		<div class="row d-flex make-center bg-secondary "
 			style="height: 55px;">
 			<div class="ml-3">
-				<a class="btn btn-primary" href="prep_item_form.htm">Add Item</a>
+				<a class="btn btn-primary" href="prep_person_form.htm">Add Person</a>
 			</div>
 			<div class="ml-3">
 				<input type="text" class="form-control rounded"
-					placeholder="Search Item" />
+					placeholder="Search Person" />
 			</div>
 			<div class="ml-3">
 				<input class="btn btn-success form-control rounded" type="submit"
@@ -64,11 +64,11 @@ $(document).ready(function(){
 		<table class="table table-striped table-bordered">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">Item Id</th>
+					<th scope="col">Person Id</th>
 					<th scope="col">Name</th>
-					<th scope="col">Course Id</th>
-					<th scope="col">Item Type</th>
-					<th scope="col">Item Price</th>
+					<th scope="col">Department Id</th>
+					<th scope="col">Settlement Type</th>
+					<th scope="col">Remark</th>
 					<th scope="col">Delete</th>
 					<th scope="col">Edit</th>
 				</tr>
@@ -76,16 +76,16 @@ $(document).ready(function(){
 			<tbody>
 
 				<%
-					for (Item item : itemList) {
+					for (Person person : personList) {
 				%>
 				<tr class="text-light bg-info">
-					<td><%=item.getItemId()%></td>
-					<td><%=item.getItemName()%></td>
-					<td><%=item.getCourseId()%></td>
-					<td><%=item.getItemType()%></td>
-					<td><%=item.getItemPrice()%></td>
-					<td><a href="delete_item.htm?itemId=<%=item.getItemId()%>">Delete</a></td>
-					<td><a href="select_item.htm?itemId=<%=item.getItemId()%>">Select</a></td>
+					<td><%=person.getPersonId()%></td>
+					<td><%=person.getPersonName()%></td>
+					<td><%=person.getDepartmentId()%></td>
+					<td><%=person.getDate()%></td>
+					<td><%=person.getRemark()%></td>
+					<td><a href="delete_person.htm?personId=<%=person.getPersonId()%>">Delete</a></td>
+					<td><a href="select_person.htm?personId=<%=person.getPersonId()%>">Select</a></td>
 				</tr>
 				<%
 					}
