@@ -1,0 +1,218 @@
+#include<iostream>
+using namespace std;
+template <class T>
+class Stack
+{
+ int top;
+ int size;
+ public:
+       T *a;
+       T x;
+       Stack(int size)
+       {
+         top=0;
+         this->size=size;
+         this->a=new T[size];
+       }
+       bool isfull()
+       {
+         if(top==size)
+         return 1;
+         else
+         return 0;
+       }
+      bool isempty()
+      {
+        if(top==0)
+        return 1;
+        else
+        return 0;
+      }
+      void push(T x)
+      {
+          if(isfull())
+          {
+                    cout<<"\nStack is Overflow"<<endl;
+
+          }
+          else
+          {
+
+                 a[top]=x;
+                 top++;
+                 cout<<"\nElement is Inserted:"<<x<<endl;
+           }
+
+
+     }
+     void pop()
+     {
+             if(isempty())
+             {
+                  cout<<"\nStack is Underflow\n";
+             }
+             else
+             {
+                   cout<<"\nPopped Element:"<<a[top-1]<<endl;
+                   top--;
+             }
+     }
+   void display()
+   {
+        int i;
+        cout<<endl<<"Stack is:"<<endl;
+     if(isempty())
+     {
+          cout<<"\nStack is Underflow\n";
+     }
+     else
+     {
+        for(i=top-1;i>=0;i--)
+        {
+             cout<<endl<<a[i]<<endl;
+        }
+     }
+   }
+};
+int main()
+{
+ int ch;
+ int size;
+ cout<<"Enter Array Size:";
+ cin>>size;
+ Stack<char> s1(size);
+do
+{
+   cout<<"1.Push\n2.Pop\n3.Display\n4.Exit";
+   cout<<"\nEnter Your Choice:";
+   cin>>ch;
+   switch(ch)
+   {
+    case 1:
+            char ele;
+            cout<<"Enter Element:";
+            cin>>ele;
+            s1.push(ele);
+            break;
+    case 2:
+            s1.pop();
+            break;
+    case 3:
+            s1.display();
+            break;
+    case 4:
+           return 0;
+  }
+}while(ch!=0);
+return 0;
+}
+"stack1.cpp" 108L, 1832C written                                                                       
+[DSLAB134@setuk DS]$ cat stack1.cpp
+#include<iostream>
+using namespace std;
+template <class T>
+class Stack
+{
+ int top;
+ int size;
+ public:
+       T *a;
+       T x; 
+       Stack(int size)
+       {
+         top=0;
+         this->size=size;
+         this->a=new T[size]; 
+       }
+       bool isfull()
+       {
+         if(top==size)
+         return 1;
+         else
+         return 0;
+       }
+      bool isempty()
+      {
+        if(top==0)
+        return 1;
+        else 
+        return 0;
+      }
+      void push(T x)
+      {
+          if(isfull())
+          {
+                    cout<<"\nStack is Overflow"<<endl;
+     
+          }
+          else
+          {
+    
+                 a[top]=x;
+                 top++;
+                 cout<<"\nElement is Inserted:"<<x<<endl;
+           }
+ 
+   
+     }
+     void pop()
+     {
+             if(isempty())
+             {
+                  cout<<"\nStack is Underflow\n";
+             }
+             else
+             {
+                   cout<<"\nPopped Element:"<<a[top-1]<<endl;
+                   top--;
+             }
+     }
+   void display()
+   {
+        int i;
+        cout<<endl<<"Stack is:"<<endl;
+     if(isempty())
+     {
+          cout<<"\nStack is Underflow\n";
+     }
+     else
+     {
+        for(i=top-1;i>=0;i--)
+        {
+             cout<<endl<<a[i]<<endl;
+        }
+     }
+   }
+};
+int main()
+{
+ int ch;
+ int size;
+ cout<<"Enter Array Size:";
+ cin>>size;
+ Stack<char> s1(size);
+do
+{
+   cout<<"1.Push\n2.Pop\n3.Display\n4.Exit";
+   cout<<"\nEnter Your Choice:";
+   cin>>ch;
+   switch(ch)
+   {
+    case 1:
+            char ele;
+            cout<<"Enter Element:";
+            cin>>ele;
+            s1.push(ele);
+            break;
+    case 2:
+            s1.pop();
+            break;
+    case 3:
+            s1.display();
+            break;
+    case 4:
+           return 0;
+  }
+}while(ch!=0);
+return 0;
+}

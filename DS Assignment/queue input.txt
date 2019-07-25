@@ -1,0 +1,74 @@
+#include<iostream>
+#ifndef __QUEUE__
+#define __QUEUE__
+
+using namespace std;
+template <typename T>
+
+class Queue
+{
+        int last;
+        int first;
+        T *storage;
+        int size;
+        public:
+
+                Queue(int size)
+                {
+                        this->last=0;
+                        this->first=0;
+                        this->size=size;
+                        storage=new T[size];
+                }
+        bool isFull()
+        {
+                if(last>=size)
+                        return 1;
+                else
+                        return 0;
+        }
+
+        void enqueue(T value)
+        {
+                T n;
+                if(isFull())
+                {
+                        cout<<"Queue is full";
+                }
+                else
+                {
+                        storage[last]=value;
+                        n=storage[last];
+                        
+                        last++;
+                }
+        
+        }
+
+        T dequeue()
+        {
+                T t;
+                if(isEmpty())
+                {
+                        cout<<"Queue is empty";
+                }
+                else
+                {
+
+                        t=storage[first];
+                        first++;
+
+                }
+                return t;
+        }
+
+
+        bool isEmpty()
+        {
+                if(first==last)
+                        return 1;
+                else
+                        return 0;
+        }
+};
+#endif

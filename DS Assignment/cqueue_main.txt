@@ -1,0 +1,24 @@
+#include"cqueue.cpp"
+int main()
+{
+        cqueue<int> cq(3);
+        while(1)
+        {
+                int n;
+                char *cmd=new char[2];
+                cin>>cmd;
+                if(cmd[0]=='a')
+                     cq.display();
+                else if(cmd[0]=='e')
+                {
+                        cin>>n;
+                        cq.enqueue(n);
+                }
+                else if(cmd[0]=='d')
+                {
+                        cout<<"Dequeue:"<<cq.dequeue()<<endl;
+                }
+        }
+
+
+}

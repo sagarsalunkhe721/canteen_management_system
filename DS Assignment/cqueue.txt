@@ -1,0 +1,78 @@
+#include<iostream>
+#ifndef  __cqueue__
+#define  __cqueue__
+using namespace std;
+template<typename T>
+class cqueue
+{
+        int size;
+        int count;
+        int front;
+        int rear;
+        T *que;
+        public:
+        cqueue(int size)
+        {
+                this->front=0;
+                this->rear=0;
+                this->size=size;
+                this->que=new int [size];
+                this->count=0;
+
+        }
+        bool isfull()
+        {
+                if(count==size)
+                        return 1;
+                else
+                        return 0;
+
+        } 
+        bool isempty()
+        {
+                if(count==0)
+                        return 1;
+                else
+                        return 0;
+        }
+        void enqueue(T data)
+        {
+                if(isfull()){
+                        cout<<"Queue is FULL";
+                }
+                else
+                {
+                        que[this->rear]=data;
+                        count++;
+                        rear=(rear+1)%size;
+
+                }
+        }  
+        T dequeue()
+        {
+                if(isempty()){
+                        cout<<"Queue is Empty";
+                }
+                else
+                {
+                        T data=que[front];
+                        front=(front+1)%size;
+                        count--;
+                        return data;
+                }
+        }
+        void display()
+        {
+           int temp=front;
+           int c=count;
+           while(c>0)
+           {
+             cout<<que[temp]<<"\t";
+             temp=(temp+1)%size;
+             c--;
+           }
+        }
+
+
+};
+#endif

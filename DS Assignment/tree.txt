@@ -1,0 +1,236 @@
+#include<iostream>
+#include<string.h>
+#include "STACK.cpp"
+#include "QUEUE3.cpp"
+using namespace std;
+template<typename T>
+class Node
+{
+  public:
+          T data;
+          Node *left;
+          Node *right;
+          Node(T data)
+         {
+            this->data=data;
+            this->left=NULL;
+            this->right=NULL;
+         }
+         void setdata(T data)
+         {
+             this->data=data;
+         }
+         T getdata()
+         {
+              return this->data;
+         }
+         void setleft(Node *left)
+         {
+          this->left=left;  
+         }
+         Node *getleft()
+         {
+            return left;
+         }
+         void setright(Node *right)
+         {
+           this->right=right;
+         }
+         Node *getright()
+         {
+           return right;
+         } 
+         void print()
+         {
+           cout<<this->getdata()<<"->";
+         }
+};
+template<typename T>
+class BST
+{
+ public:   
+         Node<T> *root;
+         BST()
+         {
+            root=NULL;
+         }
+         void insert(T data)
+         {
+                 Node<T> *newnode=new Node<T>(data);
+                 if(root==NULL)
+                 {
+                     root=newnode;
+                 }
+                 else
+                 {   Node<T> *temp=root;
+                     Node<T> *prev=NULL;
+                     while(temp!=NULL)
+                     {
+                          prev=temp;
+                          if(data>temp->getdata())
+                          {
+
+                               temp=temp->getright();
+                          }
+                          else
+                          {
+                                temp=temp->getleft();
+                          }
+                      }
+                          if(data>prev->getdata())
+                          {
+                                prev->setright(newnode);
+                          }
+                          else
+                          {
+                               prev->setleft(newnode);
+                          }
+                     
+                 }
+           }
+           void DSearch()
+           {
+             Stack<Node<T>*> store(100);
+             Node<T>*temp=root;
+             if(root==NULL)
+             cout<<"NO Node"<<endl;
+             else
+             {
+                    store.push(temp);
+                    while(!store.isEmpty())
+                    {
+                        temp=store.pop();
+                        if(temp->getleft()!=NULL)
+                        {
+                            store.push(temp->getleft());
+                        }
+                        if(temp->getright()!=NULL)
+                        {
+                           store.push(temp->getright());
+                        }
+                     temp->print();
+                    }
+             }
+             
+                cout<<endl;
+            } 
+            void BSearch()
+            {
+               Queue<Node<T>*> q(100);
+               Node<T> *temp=root;
+               if(root==NULL)
+               {
+                  cout<<"No NOde";
+               } 
+               else
+               {
+                   q.enqueue(temp);
+                   while(!q.isEmpty())
+                  {
+                     temp=q.dequeue();
+                     //prev=temp;
+                     if(temp->getleft()!=NULL)
+                     {
+                        q.enqueue(temp->getleft());
+                     }
+                     if(temp->getright()!=NULL)
+                     {
+                         q.enqueue(temp->getright());
+                     }
+                      temp->print();    
+                  }
+               }
+               cout<<endl;
+
+            }
+            void inorder(Node<T> *root)
+            {
+               if(root!=NULL)
+               {
+                  inorder(root->getleft());
+                  root->print();
+                  inorder(root->getright());
+               }
+           }
+           void inorder()
+           {
+               inorder(root);
+           }
+           void preorder(Node<T> *root)
+           {
+               if(root!=NULL)
+               {
+                  root->print();
+                  preorder(root->getleft());
+                  preorder(root->getright());
+               }
+           }
+           void preorder()
+           {
+               preorder(root);
+           } 
+           void postorder(Node<T> *root)
+           {
+             if(root!=NULL)
+             { 
+               postorder(root->getleft());
+               postorder(root->getright());
+               root->print();
+             }
+           }
+           void postorder()
+           {
+               postorder(root);
+           }       
+}; 
+void list()
+{
+   cout<<"b BreadthFirstSearch"<<endl;
+   cout<<"d DepthFirstSearch"<<endl;
+   cout<<"i Insert"<<endl;
+   cout<<"in Inorder"<<endl;
+   cout<<"po Postorder"<<endl;
+   cout<<"pr Preorder"<<endl;
+   cout<<"e exit"<<endl;
+}
+int main()
+{
+  BST<int> b;
+    list();
+  while(1)
+  {
+     char cmd[3];
+     cin>>cmd;
+     if(strcmp(cmd,"i")==0)
+     {
+       int d;
+       cin>>d;
+       b.insert(d);
+     }
+     if(strcmp(cmd,"d")==0)
+     {
+        b.DSearch();
+     }
+     if(strcmp(cmd,"in")==0)
+     {
+        b.inorder();
+     }
+     if(strcmp(cmd,"b")==0)
+     {
+       b.BSearch();
+     }
+     if(strcmp(cmd,"e")==0)
+     {
+       return 0;
+     }
+     if(strcmp(cmd,"po")==0)
+     {
+        b.postorder(); 
+     }
+     if(strcmp(cmd,"pr")==0)
+     {
+        b.preorder();
+     }
+  }
+   return 0;
+}

@@ -1,0 +1,115 @@
+#include<iostream>
+using namespace std;
+
+class Graph{
+
+public:
+Graph()
+{
+}
+int adjmatrix[50][50];
+int n;
+int dir_graph()
+{
+
+
+        int indeg,outdeg,i,j;
+
+        cout<<"How many vertices ??";
+        cin>>n;
+
+        read_graph(adjmatrix,n);
+
+        cout<<"\n vertex \t In_degree \t Out_degree \t Total_degree"<<endl;
+
+        for(i=1;i<=n;i++)
+        {
+                indeg=outdeg=0;
+
+                for(j=1;j<=n;j++)
+                {
+                        if(adjmatrix[j][i]==1)
+                        indeg++;
+                }
+
+                for(j=1;j<=n;j++)
+                {
+                        if(adjmatrix[i][j]==1)
+                        outdeg++;
+                }
+                cout<<"\n\n"<<i<<"\t\t\t"<<indeg<<"\t\t"<<outdeg<<"\t\t"<<(indeg+outdeg)<<endl;
+        }
+return 0;
+}
+
+
+int read_graph(int adjmatrix[50][50],int n)
+{
+
+int i,j;
+char reply;
+
+        for(i=1;i<=n;i++)
+        {
+
+                for(j=1;j<=n;j++)
+                {
+                        if(i==j)
+                        {
+                                adjmatrix[i][j]=0;
+                                continue;
+                        }
+
+                        cout<<"are vertices "<<i<<" and "<<j<<" are adjacent..reply with y or n?";
+                        cin>>reply;
+
+
+                        if(reply=='y'||reply=='Y')
+                        {
+                                adjmatrix[i][j]=1;
+                        }
+                        else
+                        {
+                                adjmatrix[i][j]=0;
+                        }
+                }
+
+
+        }
+
+        return 0;
+
+}
+
+
+void print()
+{
+        int i,j,count=0;
+
+        cout<<"Vertex  "<<"\t";
+        for(i=1;i<=n;i++)
+        cout<<"\t "<<i<<"\t";
+
+        cout<<"\n------------------------------------------------------------------------------------";
+        for(i=1;i<=n;i++)
+        {
+                cout<<"\n";
+                cout<<"\t"<<i<<"\t";
+                for(j=1;j<=n;j++)
+                {
+                        cout<<"\t"<<adjmatrix[i][j]<<"\t";
+                }
+        }
+
+}
+
+};
+
+
+int main()
+{
+        Graph g;
+        g.dir_graph();
+        cout<<"\n\n\n";
+        g.print();
+}

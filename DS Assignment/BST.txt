@@ -1,0 +1,311 @@
+// BST 
+
+#include<iostream>
+using namespace std;
+
+template<class T>
+class Stack{
+
+        int top;
+        int size;
+        T *stack;
+
+        public:
+
+        Stack(){
+        }
+
+        Stack(int size)
+        {
+                this->top=0;
+                this->size=size;
+                this->stack=new T[this->size];
+        }
+
+        void push(T data)
+        {
+                if(!isFull()){
+                        top++;
+                        stack[top]=data;
+                }
+                else{
+                        cout<<"The stack is full";
+                }
+        }
+
+        T pop()
+        {
+                if(!isEmpty())
+                {
+                        T t=stack[top];
+                        top--;
+                        return t;
+                }else
+                {
+                        cout<<"The stack is empty";
+                }
+        }
+
+        bool isEmpty()
+        {
+                if(top==0)
+                return 1;
+                else
+                return 0;
+        }
+
+        bool isFull()
+        {
+                if(top==size)
+                return 1;
+                return 0;
+        }
+
+};
+
+
+
+
+class Node{
+        Node *left;
+        Node *right;
+        int data;
+public:
+        Node(int data)
+        {
+                this->data=data;
+                left=NULL;
+                right=NULL;
+        }
+
+        void setdata(int data)
+        {
+                this->data=data;
+        }
+
+        int getdata()
+        {
+                return this->data;
+        }
+
+        void setleft(Node *left)
+        {
+                this->left=left;
+        }
+
+        Node *getleft()
+        {
+                return left;
+        }
+
+        void setright(Node *right)
+        {
+                this->right=right;
+        }
+
+        Node *getright()
+        {
+                return right;
+        }
+
+        void print()
+        {
+                cout<<data<<" ";
+        }
+
+};
+
+class BST{
+        Node *root;
+
+        public:
+        BST()
+        {
+                this->root=NULL;
+        }
+
+        void insert(int data)
+        {
+                Node *newnode=new Node(data);
+                if(root==NULL)
+                {
+:320                                                                                                   
+                        while(rightmost->getright()!=NULL)
+                        {
+
+                         cout<<"inside while"<<endl;
+                                preve=rightmost;
+                                rightmost=rightmost->getright();
+                        }
+                        preve->setright(NULL);
+                        return rightmost;
+                }
+
+                void twochild(int del,Node *prev,Node *temp)
+                {
+                        cout<<"delete two child "<<endl;
+                        Node *rightmost;
+                        cout<<"before rightmost"<<endl;
+                        rightmost=leftkarightmost(prev,temp);
+                        cout<<"here1 "<<rightmost->getdata()<<endl;
+                        if(prev->getright()!=NULL)
+                        {
+                                cout<<"here2"<<endl;
+                                if(prev->getright()->getdata()==del)
+                                {
+                                        cout<<"here3";
+                                        prev->setright(rightmost);
+                                        rightmost->setleft(temp->getleft());
+                                        rightmost->setright(temp->getright());
+                                }
+                        }
+                        else if(prev->getleft()!=NULL)
+                        {
+                                cout<<"here2"<<endl;
+                                if(prev->getleft()->getdata()==del)
+                                {
+                                        cout<<"here3<<endl";
+                                        prev->setleft(rightmost);
+                                        rightmost->setleft(temp->getleft());
+                                        rightmost->setright(temp->getright());
+                                }
+                        }
+
+
+                }
+/////////////////////////////////////////////////////////////////////////////////////////////////
+        void preorder(Node *root)
+        {
+                if(root!=NULL){
+                root->print();
+                preorder(root->getleft());
+                preorder(root->getright());
+                }
+        }
+
+
+        void check(int del)
+        {
+                if(root==NULL)
+                {
+                        cout<<"no element to be deleted";
+                }
+                else{
+                        Node *temp=root;
+                        Node *prev=NULL;
+                        while(temp!=NULL && temp->getdata()!=del)
+                        {
+                                prev=temp;
+                                if(del>temp->getdata())
+                                {
+                                        temp=temp->getright();
+                                }
+                                else if(del<temp->getdata())
+                                {
+                                        temp=temp->getleft();
+                                }
+                        }
+
+                        if(temp==NULL)
+                        {
+                                cout<<"Element not found"<<endl;
+                        }
+                        else{
+                                if(temp->getleft()==NULL && temp->getright()==NULL)
+                                        this->zerochild(del,prev,temp);
+                                else if(temp->getleft()!=NULL && temp->getright()!=NULL){
+                                        this->twochild(del,prev,temp);
+                                }else if((temp->getleft()==NULL && temp->getright()!=NULL)|| (temp->getleft()!=NULL &&
+                                           temp->getright()==NULL))
+                                        {
+                                        this->onechild(del,prev,temp);
+                                        }
+                                }
+                }
+
+
+        }
+
+        void preorder()
+        {
+                this->preorder(root);
+        }
+
+
+        void postorder(Node *root)
+        {
+                if(root!=NULL){
+                this->postorder(root->getleft());
+                this->postorder(root->getright());
+                root->print();
+                }
+        }
+
+        void postorder()
+        {
+                this->postorder(root);
+        }
+
+        void inorder(Node *root)
+        {
+                if(root!=NULL){
+                this->inorder(root->getleft());
+                root->print();
+                this->inorder(root->getright());
+                }
+        }
+        void inorder()
+        {
+                this->inorder(root);
+        }
+
+};
+
+int main()
+{
+        BST b;
+        int ch;
+        int del;
+        int number;
+        do{
+                cout<<"Enter your choice";
+                cin>>ch;
+                switch(ch){
+                case 1:
+                        cout<<"Enter the element to be inserted"<<endl;
+                        cin>>number;
+                        b.insert(number);
+                break;
+                case 2:
+                        cout<<"inorder"<<endl;
+                        b.inorder();
+                        break;
+                case 3:
+                        cout<<"preorder"<<endl;
+                        b.preorder();
+                        break;
+                case 4:
+                        cout<<"postorder"<<endl;
+                        b.postorder();
+                        break;
+                case 5:
+                        b.DFS();
+                        break;
+                case 6:
+                //      cout<<"hi";
+                //      b.BFS();
+                        break;
+                case 8:
+                        cout<<"Enter the element to be deleted..";
+                        cin>>del;
+
+                        b.check(del);
+                        break;
+                default:
+                        cout<<"please enter the correct choice"<<endl;
+                        break;
+                }
+        }while(ch!=7);
+
+        return 0;
+}

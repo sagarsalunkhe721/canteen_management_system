@@ -1,0 +1,262 @@
+#include <iostream>
+using namespace std;
+template<typename T>
+class Node
+{
+   T data;
+   Node *next;
+   public:
+          
+          Node(T data)
+          {
+                     this->data=data;
+                     this->next=NULL;
+          }       
+          T getdata()
+          {
+              return data;
+          }
+          Node *getnext()
+          {
+              return next;
+          }
+          void setdata(T data)
+          {
+              this->data=data;
+          }
+          void setnext(Node *next)
+          {
+            this->next=next;  
+          }
+          void print()
+          {
+              cout<<data<<"->";
+          }
+};
+template <typename T>
+class Linklist
+{
+    Node<T> *head;
+    public:
+           Linklist()
+           {
+               head=NULL;
+           }
+           void insertB(T data)
+           {
+               Node<T> *newnode=new Node<T>(data);
+               if(head==NULL)
+               {
+                   head=newnode;
+               }
+               else
+               {
+                   newnode->setnext(head);
+                   head=newnode;
+               }
+           }
+           void insertE(T data)
+           {
+               Node<T> *newnode=new Node<T>(data);
+               if(head==NULL)
+               {
+                head=newnode;
+               }
+               else
+               {
+                   Node<T> *temp=head;
+                   while(temp->getnext()!=NULL)
+                   {
+                       temp=temp->getnext();
+                   }
+                   temp->setnext(newnode);
+               }
+           }
+           void insertBefore(T before,T data)
+           {
+               Node<T> *newnode=new Node<T>(data);
+               Node<T> *temp=head;
+               Node<T> *prev=NULL;
+               while(temp!=NULL)
+               {
+                      if(temp->getdata()==before)
+                      {
+                           break;
+                      }
+                    
+                             prev=temp;
+                             temp=temp->getnext();
+                      
+              }
+               if(prev==NULL)
+               {
+                  insertB(data);
+               }
+               else
+               {
+                  prev->setnext(newnode);
+                  newnode->setnext(temp);
+               }
+           }
+           void deleteB(T data)
+           {
+               Node<T>*temp =head;
+               Node<T>*prev=NULL;
+               while(temp!=NULL)
+               {
+                   if(temp->getnext()!=NULL)
+                   {
+                         if(temp->getnext()->getdata()==data)
+                         break;
+                   }
+                   prev=temp;
+                   temp=temp->getnext();
+               }
+                if(prev!=NULL && temp!=NULL)
+                {
+                    prev->setnext(temp->getnext());
+                }
+               
+           }
+           void deleteA(T data )
+           {
+                Node<T> *temp=head->getnext();
+                Node<T> *prev=head;
+                while(temp!=NULL)
+                {
+                    if(prev->getdata()==data)
+                    break;
+                    else
+                    {
+                          prev=temp;
+                          temp=temp->getnext();
+                    }
+                }
+                prev->setnext(temp->getnext());
+           }
+           void insertA(T after,T data)
+           {
+               Node<T> *newnode=new Node<T>(data);
+               Node<T> *temp=head;
+               while((temp->getdata()!=after ) && (temp!=NULL))
+               {
+                     temp=temp->getnext();
+                }
+                newnode->setnext(temp->getnext());
+                temp->setnext(newnode);
+       
+           }
+           void deleteB()
+           {
+             Node<T> *temp=head;
+             head=head->getnext();
+             delete temp;
+            }
+            void deleteE()
+            {
+                Node<T>*temp=head;
+                Node<T>*prev=NULL;
+                while(temp->getnext()!=NULL)
+                {
+                 prev=temp;
+                 temp=temp->getnext();
+                }
+                prev->setnext(NULL);
+                delete temp;
+            }          
+           void print()
+           {
+               Node<T> *temp=head;
+               while(temp!=NULL)
+               {
+                 temp->print();
+                 temp=temp->getnext();
+               }
+               cout<<"NULL"<<endl;
+               
+           
+           }
+           
+};
+           void list()
+           {
+               cout<<"a inserted End"<<endl;
+               cout<<"i inserted Begining"<<endl;
+               cout<<"p print"<<endl;
+               cout<<"b insert before(before,data)"<<endl;
+               cout<<"d delete before"<<endl;
+               cout<<"e exit"<<endl;
+               cout<<"l list"<<endl;
+               cout<<"k insert after(after,data)"<<endl;
+               cout<<"f delete after"<<endl;
+               cout<<"v delete begining"<<endl;
+               cout<<"g delete end"<<endl;
+           }
+int main()
+{
+  Linklist<int> l1;
+  char cmd;
+  list();
+  while(1)
+  {
+      cin>>cmd;
+      if(cmd=='e')
+      {
+          break;
+      }
+      if(cmd=='i')
+      {
+          int d;
+          cin>>d;
+          l1.insertB(d);
+      }
+      if(cmd=='l')
+      {
+        list();
+      }
+      if(cmd=='d')
+      {
+        int d;
+        cin>>d;
+        l1.deleteB(d);
+      }
+      if(cmd=='b')
+      {
+        int b,d;
+        cin>>b>>d;
+        l1.insertBefore(b,d);
+      }
+      if(cmd=='a')
+      {
+        int d;
+        cin>>d;
+        l1.insertE(d);
+      }
+      if(cmd=='p')
+
+      {
+          l1.print();
+      }
+      if(cmd=='f')
+      {
+        int d;
+        cin>>d;
+        l1.deleteA(d);
+      }
+      if(cmd=='k')
+      {
+         int a,d;
+         cin>>a>>d;
+         l1.insertA(a,d);
+      }
+      if(cmd=='v')
+      {
+       
+        l1.deleteB();
+      }
+      if(cmd=='g')
+      {
+       l1.deleteE();    
+      }
+  }
+}

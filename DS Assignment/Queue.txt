@@ -1,0 +1,102 @@
+#include<iostream>
+using namespace std;
+class queue
+{
+ int front,rear;
+ int *que;
+ int size;
+ public:
+        int data;
+        queue(int size)
+        {
+          this->size=size;
+          this->que=new int[size];
+          this->front=0;
+          this->rear=0;
+        }
+        bool isemp()
+        {
+          if(rear==0||front==rear)
+          return 1;
+          else
+          return 0;
+        }
+        bool isfull()
+        {
+            if(rear>=size)
+            return 1;
+            else
+            return 0;
+        }
+        void enqueue(int data)
+        {
+           if(isfull())
+           {
+             cout<<"\nqueue is full\n";
+           }
+           else
+           {
+             que[rear]=data;
+             rear++;
+           }
+       }
+       void dequeue()
+       {
+           if(isemp())
+           {
+                cout<<"\nqueue is empty\n"<<endl;
+           }
+           else
+           {
+               int ele;
+               ele=que[front];
+                cout<<"\nElement is Deleted:"<<ele<<endl;
+               front++;
+           }
+       }
+       void display()
+       {
+           if(isemp())
+           {
+                cout<<"\nqueue is empty\n"<<endl;
+           }
+          else
+          {
+               cout<<"\nqueue is:\n";
+               for(int i=front;i<rear;i++)
+               {
+                   cout<<que[i]<<endl;
+               }
+         }
+       }
+};
+int main()
+{
+   int s,ch,ele;
+   cout<<"\nEnter Queue Size:";
+   cin>>s;
+   queue q(s);
+   do
+   {
+       cout<<"1.Enqueue\t2.Dequeue\t3.Display\t4.Exit\n";
+       cout<<"\nEnter Your Choice:";
+       cin>>ch;
+       switch(ch)
+       {
+          case 1:
+                 cout<<"Enter Element to Add:";
+                 cin>>ele;
+                 q.enqueue(ele);
+         break;
+         case 2:
+                q.dequeue();
+         break;
+         case 3:
+                q.display();
+         break;
+         case 4:
+                return 0;
+       }
+   }while(ch!=0);
+return 0;
+}

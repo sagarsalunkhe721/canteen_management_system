@@ -1,0 +1,161 @@
+#include<iostream>
+using namespace std;
+template<typename T>
+
+class sort
+{
+        public:
+                T i;
+                T *insertion(T arr[],T len)
+                {
+                        cout<<"Insertion Sort:"<<endl;
+                        int i,j,k,key;
+                        for(i=1;i<len;i++)
+                        {
+                                j=i;
+                                while(j>0&&arr[j-1]>arr[j])
+                                {
+                                        key=arr[j];
+                                        arr[j]=arr[j-1];
+                                        arr[j-1]=key;
+                                        j--;
+                                }
+                                cout<<"loop"<<i<<" ";
+                                for(k=0;k<len;k++)
+                                {
+                                        cout<<arr[k]<<" ";
+                                }
+                                cout<<endl;
+                        }
+                        cout<<"After Sorting:";
+                        for(i=0;i<len;i++)
+                        {
+                                cout<<arr[i];
+                        }
+                        delete arr;
+
+                }
+                T *selection(T arr[],T len)
+                {
+                        int i,j,k,key,min;
+                        for(i=0;i<len;i++)
+                        {
+                                min=i;
+                                for(j=i+1;j<len;j++)
+                                {
+                                        if(arr[j]<arr[min])
+                                                min=j;
+                                }
+                                key=arr[min];
+                                arr[min]=arr[i];
+                                arr[i]=key;
+
+                                cout<<"loop"<<i<<" ";
+                                for(k=0;k<len;k++)
+                                {
+                                        cout<<arr[k]<<" ";
+                                }
+                                cout<<endl;
+
+
+                        }
+
+                        cout<<"After Sorting:";
+                        for(i=0;i<len;i++)
+                        {
+                                cout<<arr[i];
+                        }
+                }
+                T *Bubble(T arr[],T len)
+                {      
+                        int i,j,key,k;
+                        for(i=0;i<len-1;i++)
+                        {
+                                for(j=0;j<len-1-i;j++)
+                                {
+                                        if(arr[j+1]<arr[j])
+                                        {
+                                                key=arr[j];
+                                                arr[j]=arr[j+1];
+                                                arr[j+1]=key;
+                                        }
+                                        cout<<"iteration"<<j<<" ";
+                                        for(k=0;k<len;k++)
+                                        {
+                                                cout<<arr[k]<<" ";
+                                        }
+                                        cout<<endl;
+
+                                }
+                                cout<<"loop"<<i<<" ";
+                                for(k=0;k<len;k++)
+                                {
+                                        cout<<arr[k]<<" ";
+                                }
+                                cout<<endl;
+
+                        }
+
+                }
+        /*      T *quick(T arr[],T low,T high)
+                {
+                        if(low<high)
+                        {
+                                T pivot=partition(arr,low,high);
+                                quick(arr,low,(pivot-1));
+                                quick(arr,(pivot+1),high);
+
+                        }
+                        T partition(T arr[],T low,T high)
+                        {
+                                T pivot=arr[high];
+                                int i=(low-1);
+                                for(int j=low;j<=high-1;j++)
+                                {
+                                        if(arr[j]<pivot)
+                                        {
+                                                i++;
+                                                key=arr[i];
+                                                arr[i]=arr[j];
+                                                arr[j]=key
+                                        }
+                                }
+                                key=arr[i+1];
+                                arr[i+1]=arr[high];
+                                arr[high]=key
+
+                        }
+                }*/
+};
+void list()
+{
+        cout<<"1.Insertion\t2.Selection\t3.Bubble"<<endl;
+}
+int main()
+{
+        int i,size,ch;
+        sort<int> s;
+        cout<<"Enter the size of array:";
+        cin>>size;
+        int *arr=new int[size];
+        cout<<"Enter the element of array:"<<endl;
+        for(i=0;i<size;i++)
+        {
+                cin>>arr[i];
+        }
+        list();
+        cout<<"\nEnter Choice:"<<endl;
+        cin>>ch;
+
+        if(ch==1)
+                int *insertion=s.insertion(arr,size);
+        if(ch==2)
+                int *selection=s.selection(arr,size);
+        if(ch==3)
+                int *Bubble=s.Bubble(arr,size);
+        if(ch==4)
+                return 0;
+
+
+
+}
