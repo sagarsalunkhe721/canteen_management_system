@@ -1,0 +1,196 @@
+#include<iostream>
+
+#include "queue.cpp"
+
+using namespace std;
+template <typename T>
+class Node
+{
+        private:
+                T data;
+                Node *left;
+                Node *right;
+        public:
+
+        Node(){}
+
+        ~Node()
+        {
+                delete left;
+                delete right;
+        }
+
+        Node(T data)
+        {
+                this->data=data;
+                this->left=NULL;
+                this->right=NULL;
+        }
+
+        void setData(T data)
+        {
+                this->data=data;
+        }
+        T getData()
+        {
+                return data;
+        }
+        void setLeft(Node *left)
+        {
+                this->left=left;
+        }
+        Node *getLeft()
+        {
+                return left;
+        }
+        void setRight(Node *right)
+        {
+                this->right=right;
+        }
+        Node *getRight()
+        {
+                return right;
+        }
+        void print()
+        {
+                cout<<this->getData()<<"->";
+        }
+};
+
+template <typename T>
+class BST
+{
+public:
+        Node<T> *root;
+        string * arr;
+        int i;
+        BST()
+        {
+                root=NULL;
+                arr= new string[20];
+                i=0;
+        }
+
+
+        void insert(T parent,T child1, T child2)
+        {
+                Node<T> *newnode = new Node<T>(parent);
+                Node<T> * newnode1= new Node<T>(child1);
+                Node<T> * newnode2= new Node<T>(child2);
+                if(root == NULL)
+                {
+                        root = newnode;
+                        root->setLeft(newnode1);
+                        root->setRight(newnode2);
+
+                }
+                else{   Node<T>* newParent= Bsearch(parent);
+                                newParent->setLeft(newnode1);
+                                newParent->setRight(newnode2);
+
+                }       
+        }
+
+
+       
+        Node<T>*  Bsearch(string required)
+        {
+                Queue<Node<T>*> q(100);
+                        q.enqueue(root);
+                        while(!q.isEmpty())
+                        {
+                                Node<T>* parent=q.dequeue();
+                                if(parent->getData()==required)
+                                {
+                                        return parent;
+                                }
+
+
+                                if(parent->getLeft() != NULL)
+                                {
+                                        q.enqueue(parent->getLeft());}
+                                if(parent->getRight() != NULL)
+                                {
+                                        q.enqueue(parent->getRight());
+                                }
+                        }
+
+        }       
+        
+         void preorder(Node<T> *root)
+           {
+               if(root!=NULL)
+               {
+                  arr[i++]=root->getData();
+                  root->print();
+                  preorder(root->getLeft());
+                  preorder(root->getRight());
+               }
+           }
+           void preorder()
+           {
+               preorder(root);
+           }
+
+        string searchSuccedder(string name)
+        {
+                for(int j=0; j<i; j++)
+                {
+                        if(arr[j] == name)
+                        {
+                                if(arr[j+1] == "--")
+                                {
+                                        return arr[j+2];
+                                }
+                                else
+                                {
+                                        return arr[j+1];
+                                }
+                        }
+
+                }
+        }
+};
+
+
+
+void list()
+{
+        cout<<"b BFS Method"<<endl;
+        cout<<"d DFS Method"<<endl;
+        cout<<"i insert"<<endl;
+        cout<<"p preorder"<<endl;
+}
+
+int main()
+{
+        BST<string> b;
+        list();
+        while(1)
+        {
+                char cmd;
+                cin>>cmd;
+                if(cmd == 'i')
+                {
+                        string d;
+                        string c;
+                        string f;
+                        cin>>d>>c>>f;
+                        b.insert(d,c,f);
+                }
+                if(cmd == 'p')
+                {
+                        b.preorder();
+                }
+                if(cmd == 's')
+                {
+                        string name,succedder;
+                        cout<<"Enter Name:"<<endl;
+                        cin>>name;
+                        succedder=b.searchSuccedder(name);
+                        cout<<"Succedder:"<<succedder<<endl;
+                }
+
+        }
+        return 0;
+}
