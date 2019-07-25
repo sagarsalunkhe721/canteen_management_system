@@ -1,0 +1,209 @@
+#include<iostream>
+#include "stack.cpp"
+#include "queue.cpp"
+using namespace std;
+class Node{
+public:
+        int data;
+        Node *left;
+        Node *right;
+        Node(int data)
+        {
+                this->data=data;
+                this->left=NULL;
+                this->right=NULL;
+        }
+        void setdata(int data)
+        {
+                this->data=data;
+        }
+        int getdata()
+        {
+                return this->data;
+        }
+        void setleft(Node *left)
+        {
+                this->left=left;
+        }
+        Node *getleft()
+        {
+                return left;
+        }
+        void setright(Node *right)
+        {
+                this->right=right;
+        }
+        Node *getright()
+        {
+                return right;
+        }
+        void print()
+        {
+                cout<<this->getdata()<<"->";
+        }
+
+};
+class BST{
+public:
+        Node *root;
+        BST(){
+                root=NULL;
+        }
+        void insert(int data)
+        {
+                Node *newnode=new Node(data);
+                if(root==NULL){
+                        root=newnode;
+                }
+                else{
+                        Node *temp=root;
+                        Node *pre=NULL;
+                        while(temp!=NULL)
+                        {
+                                pre=temp;
+                                if(data>temp->getdata())
+                                {
+                                        temp=temp->getright();
+                                }
+                                else{
+                                        temp=temp->getleft();
+                                }
+                        }
+                        if(data>pre->getdata())
+                        {
+                                pre->setright(newnode);
+                        }
+                        else{
+                                pre->setleft(newnode);
+                        }
+                }
+        }
+        void DfSearch()
+        {
+                Stack<Node*> s(100);
+                Node *temp=root;
+                if(root==NULL)
+                {
+                        cout<<"no node present";
+                }
+                else{
+                        s.push(temp);
+                        while(!s.isEmpty())
+                        {
+                                temp=s.pop();
+                                if(temp->getright()!=NULL){
+                                        s.push(temp->getright());
+                                }
+                                if(temp->getleft()!=NULL){
+                                        s.push(temp->getleft());
+                                }
+                        temp->print();
+                        }
+                }
+        }
+        void BfSearch()
+        {
+                Queue<Node*> q(100);
+                Node *temp=root;
+                if(root==NULL)
+                {
+                        cout<<"no node present";
+                }
+                else{
+                        q.enqueue(temp);
+                        while(!q.isEmpty()){
+                                temp=q.dequeue();
+                                if(temp->getleft()!=NULL){
+                                        q.enqueue(temp->getleft());
+                                }
+                                if(temp->getright()!=NULL){
+                                        q.enqueue(temp->getright());
+                                }
+                        temp->print();
+                        }
+                }
+
+        }
+        void inorder(Node *root){
+                if(root!=NULL)
+                {
+                        inorder(root->getleft());
+                        root->print();
+                        inorder(root->getright());
+                }
+
+        }
+
+        void inorder(){
+                inorder(root);
+        }
+
+
+        void preorder(Node *root){
+                if(root!=NULL){
+                        root->print();
+                        preorder(root->getleft());
+                        preorder(root->getright());
+                }
+        }
+        void preorder()
+        {
+                preorder(root);
+        }
+
+        void postorder(Node *root)
+        {
+                if(root!=NULL){
+                        postorder(root->getleft());
+                        postorder(root->getright());
+                        root->print();
+                }
+        }
+        void postorder()
+        {
+                postorder(root);
+        }
+
+
+};
+int main()
+{
+        BST b;
+        int ch;
+        do{
+        cout<<"1.insert\n 2.dfs\n3.bfs \n4.inorder \n5preorder \n6 postorder"<<endl;
+        cout<<"enter choice";
+        cin>>ch;
+
+                switch(ch){
+                        case 1:
+                                int num;
+                                cout<<"enter element";
+                                cin>>num;
+                                b.insert(num);
+                                break;
+                        case 2:
+                                b.DfSearch();
+                                break;
+                        case 3:
+                                b.BfSearch();
+                                break;
+
+                        case 4:
+                                b.inorder();
+                                break;
+                        case 5:
+                                b.preorder();
+                                break;
+                        case 6:
+                                b.postorder();
+                                break;
+
+                }
+
+
+        }while(ch!=0);
+
+return 0;
+}
+  

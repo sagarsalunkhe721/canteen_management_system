@@ -1,0 +1,68 @@
+Q. What is structure in c?
+Q. What is difference between structure and union?
+Q. What is array?
+Q. What is string?
+Q. What is pointer?
+Q. What is double pointer?
+Q. What is difference between c and c++?
+Q. Why array starts from 0 location?
+Q. What is class in c++
+Q. What is difference between class and structure
+Q. What is oops concepts explain all with example
+Q. What is difference between abstraction and polymorphism
+Q. What is use of objects
+Q. What is inheritance with example
+Q. Explain access specifiers in c++
+Q. What is difference between protected and public Access control specifier
+Q. What are functions
+Q. Can we define functions inside functions
+Q. How to define functions outside class
+Q. How to create objects of a class?
+Q. What is data members and member function
+Q. How to call methods of a class.
+Q. Can main method override in c and c++
+Q. What are reference variable in c and c++
+Q. What is difference between call by value and call by reference?
+Q. What is constructor
+Q. Rules of a constructor
+
+What is constructor chaining in c++
+Q. What is polymorphism and type's of polymorphism
+Q. What is dynamic binding
+Q. What is destructor
+Q. What is runtime polymorphism how to achieve it
+Q. What are virtual function
+Q. What is templates
+Q. What is operator overloading With example
+Q. What is function overloading What is function overriding DATABASES
+Q. What is rdbms
+Q. Insert query for emp table
+Q. Select query for employee table
+Q. Write create table query for employee table
+Q. What is primary key
+Q. What are table constraints like primary key, foreign key, uniqe key
+Q. How many primary key created per table
+Q. How many primary key created per table
+Q. What's foreign key
+Q. Can primary key can be null
+Q. Difference between primary and foreign key
+Q. Difference between unique and primary key
+Q. What are joins
+Q. Write query for simple join
+Q. Types of joins and explain
+Q. What are cursors in plsql
+Q. What is pl sql
+Q. What are sequences in plsql
+Q. What are group functions in mysql Like sum, avg
+Q. Write alter table query
+Q. Write update table query
+
+
+Query
+Q. Difference between truncate and delete
+Q. What are ddl, dml are n database
+Q. What are dml commands
+Q. What is transaction innmysql
+Q. What is commit and rollback
+Q. What is difference between delete truncate and drop table
+Q. What are indexes and type's of index's
